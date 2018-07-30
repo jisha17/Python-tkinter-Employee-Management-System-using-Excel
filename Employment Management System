@@ -1,16 +1,8 @@
-# coding: utf-8
-
-# # Employee Management System 
-
-# # Add
-
-# # Remove
-
-# # Add manager
-
-# # View data for every employee
-
-# In[20]:
+#Employee Management System 
+#Add
+#Remove
+#Add manager
+#View data for every employee
 
 from tkinter import*
 from tkinter import messagebox
