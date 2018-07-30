@@ -122,8 +122,7 @@ def clear_all():             #for clearing the entry widgets
 
     
 def remove_emp():                #for taking user input to remove enteries
-    frame1.pack_forget()
-    frame3.pack_forget()
+    clear_all()
     emp_first_name=Label(frame2,text="Enter first name of the employee")
     emp_first_name.pack(pady=10)
     e6=Entry(frame2,textvariable=remove_firstname)
@@ -142,7 +141,7 @@ def remove_emp():                #for taking user input to remove enteries
 def remove_entry():  #to remove entry from excel sheet
     rsf=remove_firstname.get()
     rsf1=rsf.lower()
-    print()
+    print(rsf1)
     rsl=remove_lastname.get()
     rsl1=rsl.lower()
     print(rsl1)
@@ -165,8 +164,9 @@ def remove_entry():  #to remove entry from excel sheet
     clear_all()
 
 def search_emp():     #can implement search by 1st name,last name,emp id, designation
-    frame1.pack_forget()
-    frame2.pack_forget()
+    #frame1.pack_forget()
+    #frame2.pack_forget()
+    #clear_all()
     emp_first_name=Label(frame3,text="Enter first name of the employee")   #to take user input to seach
     emp_first_name.pack(pady=10)
     e8=Entry(frame3,textvariable=searchfirstname)
@@ -186,25 +186,27 @@ def search_emp():     #can implement search by 1st name,last name,emp id, design
     
 def search_entry():
     sf=searchfirstname.get()
-    sf1=sf.lower()
-    print(sf1)
+    ssf1=sf.lower()
+    print(ssf1)
     sl=searchlastname.get()
-    sl1=sl.lower()
-    print(sl1)
+    ssl1=sl.lower()
+    print(ssl1)
     path="sample.xlsx"
     wb = xlrd.open_workbook(path)
     sheet = wb.sheet_by_index(0)
 
     for row_num in range(sheet.nrows):
         row_value = sheet.row_values(row_num)
-        if (row_value[1]==sf1 and row_value[2]==sl1):
+        if (row_value[1]==ssf1 and row_value[2]==ssl1):
             print(row_value)
             print("found")
             messagebox.showinfo("Done","Searched Employee Exist")
-    frame3.pack_forget()
-            
-        #else:
-            #print("Not found")
+            clear_all()
+    #else:
+    if(row_value[1]!=ssf1 and row_value[2]!=ssl1):
+        print("Not found")
+        messagebox.showinfo("Sorry","Employee does not Exist")
+        clear_all()
 
         
 #Main window buttons and labels
